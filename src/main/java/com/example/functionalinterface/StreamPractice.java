@@ -18,13 +18,23 @@ public class StreamPractice {
         (new EmployeeBean(8,"jaya","nalla",9000,"IT")),
         (new EmployeeBean(9,"satti","chetta",1500,"Executive"))));
 
+    Map<String,List<EmployeeBean>> map=list.stream().collect(Collectors.groupingBy(EmployeeBean::getEmpDept,Collectors.toList()));
+        /*for (Map.Entry<String, List<EmployeeBean>> listEntry : map.entrySet()) {
+            System.out.println("Dept Name :" + listEntry.getKey() + "  Employess are" + listEntry.getValue());
+        }*/
+        Map<String,List<EmployeeBean>> map1=   map.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getKey)).
+                collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(a, b)->a,LinkedHashMap::new));
+        map1.entrySet().forEach(stringListEntry -> {
+            System.out.println("Dept Name :"+stringListEntry.getKey()+"  Employess are"+stringListEntry.getValue());
+        });
+/*
        Map<String,Long>dupmap= list.stream().collect(Collectors.groupingBy(EmployeeBean::getEmpDept
                ,Collectors.counting()));
 
        List<String> strings=list.stream().map(emp->emp.getEmpDept()).collect(Collectors.toList());
        Set<String> unique=new HashSet<>();
      Set<String> dupset=  strings.stream().filter(emp->!unique.add(emp)).collect(Collectors.toSet());
-        System.out.println(dupset);
+        System.out.println(dupset);*/
         /*dupmap. entrySet().forEach(stringLongEntry -> {
                    System.out.println(stringLongEntry.getKey());
                    System.out.println(stringLongEntry.getValue());
