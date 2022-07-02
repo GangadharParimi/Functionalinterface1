@@ -41,10 +41,13 @@ public class MapIteration {
 
         stringMap.entrySet().stream().
                 sorted((o1,o2)->{
-                    return (o1.getValue().compareTo(o2.getValue()));
+                    return (o1.getKey().compareTo(o2.getKey()));
                 }).collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(a, b)->a,LinkedHashMap::new)).entrySet().
                 forEach(stringStringEntry -> {
                     System.out.println("Key  "+stringStringEntry.getKey()+"  Value   "+stringStringEntry.getValue());
                 });
+        stringMap.entrySet().stream()
+                .filter(entry -> entry.getKey()>15).map(integerStringEntry -> integerStringEntry.getValue()).
+                collect(Collectors.toList()).stream().forEach(entry -> System.out.println(entry));
     }
 }

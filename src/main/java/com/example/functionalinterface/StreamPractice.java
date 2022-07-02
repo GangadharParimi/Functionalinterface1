@@ -23,7 +23,7 @@ public class StreamPractice {
             System.out.println("Dept Name :" + listEntry.getKey() + "  Employess are" + listEntry.getValue());
         }*/
         Map<String,List<EmployeeBean>> map1=   map.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getKey)).
-                collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(a, b)->a,LinkedHashMap::new));
+                            collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(a,b)->a,LinkedHashMap::new));
         map1.entrySet().forEach(stringListEntry -> {
             System.out.println("Dept Name :"+stringListEntry.getKey()+"  Employess are"+stringListEntry.getValue());
         });
