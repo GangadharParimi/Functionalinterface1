@@ -32,7 +32,7 @@ public class StringCharacterCount {
             }
             }
         }
-        System.out.println(map1);
+        /*System.out.println(map1);*/
     }
 
 
