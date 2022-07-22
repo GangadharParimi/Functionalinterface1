@@ -18,15 +18,16 @@ public class StreamPractice {
         (new EmployeeBean(8,"jaya","nalla",9000,"IT")),
         (new EmployeeBean(9,"satti","chetta",1500,"Executive"))));
 
-    Map<String,List<EmployeeBean>> map=list.stream().collect(Collectors.groupingBy(EmployeeBean::getEmpDept,Collectors.toList()));
-        /*for (Map.Entry<String, List<EmployeeBean>> listEntry : map.entrySet()) {
+   /* Map<String,List<EmployeeBean>> map=list.stream().collect(Collectors.groupingBy(EmployeeBean::getEmpDept,Collectors.toList()));
+        *//*for (Map.Entry<String, List<EmployeeBean>> listEntry : map.entrySet()) {
             System.out.println("Dept Name :" + listEntry.getKey() + "  Employess are" + listEntry.getValue());
-        }*/
+        }*//*
         Map<String,List<EmployeeBean>> map1=   map.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getKey)).
                             collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(a,b)->a,LinkedHashMap::new));
         map1.entrySet().forEach(stringListEntry -> {
             System.out.println("Dept Name :"+stringListEntry.getKey()+"  Employess are"+stringListEntry.getValue());
-        });
+        });*/
+
 /*
        Map<String,Long>dupmap= list.stream().collect(Collectors.groupingBy(EmployeeBean::getEmpDept
                ,Collectors.counting()));
@@ -48,9 +49,9 @@ public class StreamPractice {
             System.out.println("Key"+doubleListEntry.getKey());
             System.out.println("Value"+doubleListEntry.getValue());
         });*//*
-*//*
-        System.out.println(  list.stream().max(Comparator.comparing(EmployeeBean::getEmpSal)).get());
-        System.out.println(  list.stream().max(((o1, o2) -> o1.getEmpSal()>o2.getEmpSal()?1:-1)).get());*//*
+*/
+      /*  System.out.println(  list.stream().max(Comparator.comparing(EmployeeBean::getEmpSal)).get());
+        System.out.println(  list.stream().max(((o1, o2) -> o1.getEmpSal()>o2.getEmpSal()?1:-1)).get());
 
        Map<String, Optional<EmployeeBean>> map= list.stream().collect(Collectors.groupingBy(EmployeeBean::getEmpDept,Collectors.reducing(
                 BinaryOperator.maxBy(Comparator.comparing(EmployeeBean::getEmpSal))
@@ -58,12 +59,12 @@ public class StreamPractice {
         map.entrySet().forEach(doubleListEntry -> {
             System.out.println("Key"+doubleListEntry.getKey());
             System.out.println("Value"+doubleListEntry.getValue());
-        });
+        });*/
 
-        list.stream().map(e->{
+        list.stream().filter(e->e.getEmpSal()<5000).map(e->{
          if(e.getEmpSal()<5000){
              e.setEmpSal(e.getEmpSal()*100);
          }return e;
-        }).collect(Collectors.toList()).forEach(System.out::println);*/
+        }).collect(Collectors.toList()).forEach(System.out::println);
     }
 }

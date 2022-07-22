@@ -1,6 +1,6 @@
 package com.example.functionalinterface;
 
-public class EmployeeBean {
+public class EmployeeBean implements Comparable<EmployeeBean>{
     private int empid;
     private String firstName;
     private String lastName;
@@ -68,4 +68,12 @@ public class EmployeeBean {
                 ", empDept='" + empDept + '\'' +
                 '}';
     }
+
+
+    @Override
+    public int compareTo(EmployeeBean o) {
+        return o.getEmpid()>this.getEmpid()?1:-1;
+    }
+
+
 }
