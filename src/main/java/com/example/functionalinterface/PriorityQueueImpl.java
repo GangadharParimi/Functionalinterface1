@@ -39,6 +39,7 @@ public class PriorityQueueImpl {
         integers.add(10);
         integers.add(36);
         integers.add(45);
+
         integers.forEach(System.out::println);
 
 
